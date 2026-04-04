@@ -31,9 +31,17 @@ public class DemoqaDifficultForm extends TestBase {
         $(byText("Karnal")).click();
         $("[id=submit]").click();
 
-      //  $("[id=output] [id=name]").shouldHave(text("Alex Black"));
-        //$("[id=output] [id=email]").shouldHave(text("alex@black.com"));
-       // $("[id=output] [id=currentAddress]").shouldHave(text("first address 1"));
-        // $("[id=output] [id=permanentAddress]").shouldHave(text("second address 2"));
+        // проверка результатов
+        $(".table-responsive").shouldHave(text("Anna Vetrova"));
+        $(".table-responsive").shouldHave(text("anna.vetrova@asdfg.ru"));
+        $(".table-responsive").shouldHave(text("Female"));
+        $(".table-responsive").shouldHave(text("8923456782"));
+        $(".table-responsive").shouldHave(text("10 May,2000"));
+        $(".table-responsive").shouldHave(text("Hindi"));
+        $(".table-responsive").shouldHave(text("Sports"));
+        $(".table-responsive").shouldHave(text("img.png"));
+        $(".table-responsive").shouldHave(text("Kazan"));
+        $(".table-responsive").shouldHave(text("Haryana Karnal"));
+        $("[id=closeLargeModal]").click();
     }
-}
+    }
