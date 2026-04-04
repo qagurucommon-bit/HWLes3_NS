@@ -31,6 +31,7 @@ public class DemoqaDifficultForm extends TestBase {
         $(byText("Karnal")).click();
         $("[id=submit]").click();
 
+
         // проверка результатов
         $(".table-responsive").shouldHave(text("Anna Vetrova"));
         $(".table-responsive").shouldHave(text("anna.vetrova@asdfg.ru"));
