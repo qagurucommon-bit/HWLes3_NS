@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class DemoqaDifficultForm extends TestBase {
+public class DemoqaForm extends TestBase {
 
     @Test
     void successfulFillFormTest() {
@@ -30,7 +30,6 @@ public class DemoqaDifficultForm extends TestBase {
         $("[id=city]").click();
         $(byText("Karnal")).click();
         $("[id=submit]").click();
-
 
         // проверка результатов
         $(".table-responsive").shouldHave(text("Anna Vetrova"));
