@@ -11,11 +11,10 @@ public class TextBoxShort extends TestBase {
     @Test
     void successfulFillFormTest() {
         open("/text-box");
-        $("[id=userName]").setValue("Rudolf");
-        $("[id=submit]").click();
+        $("#userName").setValue("Rudolf");
+        $("#submit").click();
 
         //проверка результатов
-        $("[id=output] [id=name]").shouldHave(text("Rudolf"));
-
+        $("#output #name").shouldHave(text("Rudolf"));
     }
 }

@@ -10,13 +10,12 @@ import static com.codeborne.selenide.Selenide.open;
 public class TextBoxShortNegative extends TestBase {
 
     @Test
-    void NegativeTestForm() {
+    void negativeTestForm() {
         open("/text-box");
-        $("[id=userEmail]").setValue("qwerty");
-        $("[id=submit]").click();
+        $("#userEmail").setValue("qwerty");
+        $("#submit").click();
 
         //проверка результатов
-        $("[id=output]").shouldNot(appear);
-
+        $("#output").shouldNot(appear);
     }
 }

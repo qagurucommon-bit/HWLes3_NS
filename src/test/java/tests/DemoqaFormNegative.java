@@ -10,37 +10,31 @@ import static com.codeborne.selenide.Selenide.open;
 public class DemoqaFormNegative extends TestBase {
 
     @Test //некорректное заполнение поля "Mobile"
-    void NegativeTestUserNumber () {
+    void negativeTestUserNumber () {
         open("/automation-practice-form");
-
-        $("[id=userNumber]").setValue("qwerty");
-        $("[id=submit]").click();
+        $("#userNumber").setValue("qwerty");
+        $("#submit").click();
 
         // проверка результатов
         $(".modal-dialog modal-lg").shouldNot(appear);
-
     }
 
     @Test //некорректное заполнение поля "Subjects"
-    void NegativeTestSubject () {
+    void negativeTestSubject () {
         open("/automation-practice-form");
-
-        $("[id=subjectsInput]").setValue("12345");
-        $("[id=submit]").click();
+        $("#subjectsInput").setValue("12345").pressEnter();
+        $("#submit").click();
 
         // проверка результатов
         $(".modal-dialog modal-lg").shouldNot(appear);
-
     }
 
     @Test //отправка пустой формы
-    void NegativeTestsEmptyForm () {
+    void negativeTestsEmptyForm () {
         open("/automation-practice-form");
-
-        $("[id=submit]").click();
+        $("#submit").click();
 
         // проверка результатов
         $(".modal-dialog modal-lg").shouldNot(appear);
-
     }
 }

@@ -11,25 +11,24 @@ public class DemoqaForm extends TestBase {
     @Test
     void successfulFillFormTest() {
         open("/automation-practice-form");
-        $("[id=firstName]").setValue("Anna");
-        $("[id=lastName]").setValue("Vetrova");
-        $("[id=userEmail]").setValue("anna.vetrova@asdfg.ru");
-        $("[for=gender-radio-2]").click();
-        $("[id=userNumber]").setValue("8923456782");
-        $("[id=dateOfBirthInput]").click();
+        $("#firstName").setValue("Anna");
+        $("#lastName").setValue("Vetrova");
+        $("#userEmail").setValue("anna.vetrova@asdfg.ru");
+        $("#genterWrapper").find(byText("Female")).click();
+        $("#userNumber").setValue("8923456782");
+        $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("May");
         $(".react-datepicker__year-select").selectOption("2000");
         $(".react-datepicker__day.react-datepicker__day--010").click();
-        $("[id=subjectsInput]").setValue("Hindi");
-        $(byText("Hindi")).click();
-        $("#hobbies-checkbox-1[value='1']").click();
+        $("#subjectsInput").setValue("Hindi").pressEnter();
+        $("#hobbiesWrapper").find(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("img.png");
-        $("[id=currentAddress]").setValue("Kazan");
-        $("[id=state]").click();
+        $("#currentAddress").setValue("Kazan");
+        $("#state").click();
         $(byText("Haryana")).click();
-        $("[id=city]").click();
+        $("#city").click();
         $(byText("Karnal")).click();
-        $("[id=submit]").click();
+        $("#submit").click();
 
         // проверка результатов
         $(".table-responsive").shouldHave(text("Anna Vetrova"));
@@ -42,6 +41,6 @@ public class DemoqaForm extends TestBase {
         $(".table-responsive").shouldHave(text("img.png"));
         $(".table-responsive").shouldHave(text("Kazan"));
         $(".table-responsive").shouldHave(text("Haryana Karnal"));
-        $("[id=closeLargeModal]").click();
+        $("#closeLargeModal").click();
     }
     }
