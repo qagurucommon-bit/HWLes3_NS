@@ -25,9 +25,9 @@ public class DemoqaForm extends TestBase {
         $("#uploadPicture").uploadFromClasspath("img.png");
         $("#currentAddress").setValue("Kazan");
         $("#state").click();
-        $(byText("Haryana")).click();
+        $("#stateCity-wrapper").$(byText("Haryana")).click();
         $("#city").click();
-        $(byText("Karnal")).click();
+        $("#stateCity-wrapper").$(byText("Karnal")).click();
         $("#submit").click();
 
         // проверка результатов
