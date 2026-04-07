@@ -1,46 +1,49 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import src.test.testData.TestData
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static testdata.TestData.*;
 
 public class DemoqaForm extends TestBase {
 
     @Test
     void successfulFillFormTest() {
         open("/automation-practice-form");
-        $("#firstName").setValue("Anna");
-        $("#lastName").setValue("Vetrova");
-        $("#userEmail").setValue("anna.vetrova@asdfg.ru");
-        $("#genterWrapper").find(byText("Female")).click();
-        $("#userNumber").setValue("8923456782");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userEmail").setValue(userEmail);
+        $("#genterWrapper").find(byText(gender)).click();
+        $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("May");
         $(".react-datepicker__year-select").selectOption("2000");
         $(".react-datepicker__day.react-datepicker__day--010").click();
-        $("#subjectsInput").setValue("Hindi").pressEnter();
-        $("#hobbiesWrapper").find(byText("Sports")).click();
-        $("#uploadPicture").uploadFromClasspath("img.png");
-        $("#currentAddress").setValue("Kazan");
+        $("#subjectsInput").setValue(subjectsInput).pressEnter();
+        $("#hobbiesWrapper").find(byText(hobbies)).click();
+        $("#uploadPicture").uploadFromClasspath(pictureName);
+        $("#currentAddress").setValue(currentAddress);
         $("#state").click();
-        $("#stateCity-wrapper").$(byText("Haryana")).click();
+        $("#stateCity-wrapper").$(byText(state)).click();
         $("#city").click();
-        $("#stateCity-wrapper").$(byText("Karnal")).click();
+        $("#stateCity-wrapper").$(byText(city)).click();
         $("#submit").click();
 
         // проверка результатов
-        $(".table-responsive").shouldHave(text("Anna Vetrova"));
-        $(".table-responsive").shouldHave(text("anna.vetrova@asdfg.ru"));
-        $(".table-responsive").shouldHave(text("Female"));
-        $(".table-responsive").shouldHave(text("8923456782"));
-        $(".table-responsive").shouldHave(text("10 May,2000"));
-        $(".table-responsive").shouldHave(text("Hindi"));
-        $(".table-responsive").shouldHave(text("Sports"));
-        $(".table-responsive").shouldHave(text("img.png"));
-        $(".table-responsive").shouldHave(text("Kazan"));
-        $(".table-responsive").shouldHave(text("Haryana Karnal"));
+        $(".table-responsive").shouldHave(text(firstName + " " + lastName));
+        $(".table-responsive").shouldHave(text(userEmail));
+        $(".table-responsive").shouldHave(text(gender));
+        $(".table-responsive").shouldHave(text(userNumber));
+
+        $(".table-responsive").shouldHave(text(dateOfBirth));
+        $(".table-responsive").shouldHave(text(subjectsInput));
+        $(".table-responsive").shouldHave(text(hobbies));
+        $(".table-responsive").shouldHave(text(pictureName));
+        $(".table-responsive").shouldHave(text(currentAddress));
+        $(".table-responsive").shouldHave(text(state + " " + city));
         $("#closeLargeModal").click();
     }
     }
