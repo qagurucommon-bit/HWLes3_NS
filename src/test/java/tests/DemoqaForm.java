@@ -1,7 +1,6 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import src.test.testData.TestData
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -16,12 +15,12 @@ public class DemoqaForm extends TestBase {
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
-        $("#genterWrapper").find(byText(gender)).click();
+        $("#genterWrapper").find(byText(genter)).click();
         $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("May");
-        $(".react-datepicker__year-select").selectOption("2000");
-        $(".react-datepicker__day.react-datepicker__day--010").click();
+        $(".react-datepicker__month-select").selectOption(month);
+        $(".react-datepicker__year-select").selectOption(year);
+        $(".react-datepicker__day--0"+day).click();
         $("#subjectsInput").setValue(subjectsInput).pressEnter();
         $("#hobbiesWrapper").find(byText(hobbies)).click();
         $("#uploadPicture").uploadFromClasspath(pictureName);
@@ -35,10 +34,9 @@ public class DemoqaForm extends TestBase {
         // проверка результатов
         $(".table-responsive").shouldHave(text(firstName + " " + lastName));
         $(".table-responsive").shouldHave(text(userEmail));
-        $(".table-responsive").shouldHave(text(gender));
+        $(".table-responsive").shouldHave(text(genter));
         $(".table-responsive").shouldHave(text(userNumber));
-
-        $(".table-responsive").shouldHave(text(dateOfBirth));
+        $(".modal-body").shouldHave(text(day + " " + month + "," + year));
         $(".table-responsive").shouldHave(text(subjectsInput));
         $(".table-responsive").shouldHave(text(hobbies));
         $(".table-responsive").shouldHave(text(pictureName));

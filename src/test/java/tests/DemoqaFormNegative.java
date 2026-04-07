@@ -6,13 +6,14 @@ import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static testdata.TestData.*;
 
 public class DemoqaFormNegative extends TestBase {
 
     @Test //некорректное заполнение поля "Mobile"
     void negativeTestUserNumber () {
         open("/automation-practice-form");
-        $("#userNumber").setValue("qwerty");
+        $("#userNumber").setValue(errorUserNumber);
         $("#submit").click();
 
         // проверка результатов
@@ -22,7 +23,7 @@ public class DemoqaFormNegative extends TestBase {
     @Test //некорректное заполнение поля "Subjects"
     void negativeTestSubject () {
         open("/automation-practice-form");
-        $("#subjectsInput").setValue("12345").pressEnter();
+        $("#subjectsInput").setValue(errorSubjectsInput).pressEnter();
         $("#submit").click();
 
         // проверка результатов
