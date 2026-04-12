@@ -3,16 +3,18 @@ package tests;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static testdata.TestData.*;
 
 public class TextBoxShortNegative extends TestBase {
 
     @Test
-    void negativeTestForm() {
+    void negativeFormTest() {
         open("/text-box");
+        executeJavaScript("""
+                    document.getElementById('fixedban')?.remove();
+                    document.querySelector('footer')?.remove();
+                """);
         $("#userEmail").setValue(errorUserEmail);
         $("#submit").click();
 

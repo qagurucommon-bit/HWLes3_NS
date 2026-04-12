@@ -12,6 +12,10 @@ public class DemoqaForm extends TestBase {
     @Test
     void successfulFillFormTest() {
         open("/automation-practice-form");
+        executeJavaScript("""
+                    document.getElementById('fixedban')?.remove();
+                    document.querySelector('footer')?.remove();
+                """);
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
@@ -20,7 +24,7 @@ public class DemoqaForm extends TestBase {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(month);
         $(".react-datepicker__year-select").selectOption(year);
-        $(".react-datepicker__day--0"+day).click();
+        $(".react-datepicker__day--0" + day).click();
         $("#subjectsInput").setValue(subjectsInput).pressEnter();
         $("#hobbiesWrapper").find(byText(hobbies)).click();
         $("#uploadPicture").uploadFromClasspath(pictureName);
@@ -44,4 +48,4 @@ public class DemoqaForm extends TestBase {
         $(".table-responsive").shouldHave(text(state + " " + city));
         $("#closeLargeModal").click();
     }
-    }
+}

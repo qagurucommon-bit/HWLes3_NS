@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static testdata.TestData.*;
 
 public class DemoqaFormShort extends TestBase {
@@ -13,6 +12,10 @@ public class DemoqaFormShort extends TestBase {
     @Test
     void successfulFillFormTest() {
         open("/automation-practice-form");
+        executeJavaScript("""
+                    document.getElementById('fixedban')?.remove();
+                    document.querySelector('footer')?.remove();
+                """);
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#genterWrapper").find(byText(genter)).click();
@@ -25,4 +28,4 @@ public class DemoqaFormShort extends TestBase {
         $(".table-responsive").shouldHave(text(userNumber));
         $("#closeLargeModal").click();
     }
-    }
+}
