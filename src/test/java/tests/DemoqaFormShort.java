@@ -2,30 +2,27 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-import static testdata.TestData.*;
+import static tests.testdata.TestData.*;
 
 public class DemoqaFormShort extends TestBase {
 
     @Test
     void successfulFillFormTest() {
-        open("/automation-practice-form");
-        executeJavaScript("""
-                    document.getElementById('fixedban')?.remove();
-                    document.querySelector('footer')?.remove();
-                """);
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#genterWrapper").find(byText(genter)).click();
-        $("#userNumber").setValue(userNumber);
-        $("#submit").click();
+        demoqaPage.openPage()
+                .closeBanner()
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .setGender(genter)
+                .typeUserNumber(userNumber)
+                .submitForm()
 
-        // проверка результатов
-        $(".table-responsive").shouldHave(text(firstName + " " + lastName));
-        $(".table-responsive").shouldHave(text(genter));
-        $(".table-responsive").shouldHave(text(userNumber));
-        $("#closeLargeModal").click();
+                // проверка результатов
+                .modalDialogOpen()
+                .checkTitle(tableTitle)
+                .checkResult("Student Name", firstName + " " + lastName)
+                .checkResult("Gender", genter)
+                .checkResult("Mobile", userNumber)
+                .closeModal();
+
     }
 }

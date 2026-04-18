@@ -1,4 +1,4 @@
-package testdata;
+package tests.testdata;
 
 public class TestData {
 
@@ -19,6 +19,8 @@ public class TestData {
     public static String currentAddress = "Kazan";
     public static String state = "Haryana";
     public static String city = "Karnal";
+    public static String tableTitle = "Thanks for submitting the form";
+
 
     //данные для формы TestBoxShort
     public static String userName = "Rudolf";

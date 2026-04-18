@@ -3,10 +3,15 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import pages.DemoqaPage;
+import pages.TestBoxPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
+    DemoqaPage demoqaPage = new DemoqaPage();
+    TestBoxPage testBoxPage = new TestBoxPage();
+
     @BeforeAll
     static void setupSelenideEnv() {
         Configuration.browser = "chrome";

@@ -2,23 +2,18 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Selenide.*;
-import static testdata.TestData.*;
+import static tests.testdata.TestData.errorUserEmail;
 
 public class TextBoxShortNegative extends TestBase {
 
     @Test
     void negativeFormTest() {
-        open("/text-box");
-        executeJavaScript("""
-                    document.getElementById('fixedban')?.remove();
-                    document.querySelector('footer')?.remove();
-                """);
-        $("#userEmail").setValue(errorUserEmail);
-        $("#submit").click();
+        testBoxPage.openPage()
+                .closeBanner()
+                .typeUserEmail(errorUserEmail)
+                .submitForm()
 
-        //проверка результатов
-        $("#output").shouldNot(appear);
+                //проверка результатов
+                .checkResultNotOpened();
     }
 }

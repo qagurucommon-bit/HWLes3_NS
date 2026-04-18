@@ -2,23 +2,18 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
-import static testdata.TestData.*;
+import static tests.testdata.TestData.userName;
 
 public class TextBoxShort extends TestBase {
 
     @Test
     void successfulFillFormTest() {
-        open("/text-box");
-        executeJavaScript("""
-                    document.getElementById('fixedban')?.remove();
-                    document.querySelector('footer')?.remove();
-                """);
-        $("#userName").setValue(userName);
-        $("#submit").click();
+        testBoxPage.openPage()
+                .closeBanner()
+                .typeUserName(userName)
+                .submitForm()
 
-        //проверка результатов
-        $("#output #name").shouldHave(text(userName));
+                //проверка результатов
+                .checkResult(userName);
     }
 }
