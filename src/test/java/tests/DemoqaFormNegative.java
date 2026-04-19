@@ -2,9 +2,6 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
-import static tests.testdata.TestData.errorSubjectsInput;
-import static tests.testdata.TestData.errorUserNumber;
-
 public class DemoqaFormNegative extends TestBase {
 
     @Test
@@ -12,10 +9,8 @@ public class DemoqaFormNegative extends TestBase {
     void negativeUserNumberTest() {
         demoqaPage.openPage()
                 .closeBanner()
-                .typeUserNumber(errorUserNumber)
+                .typeUserNumber(testData.errorUserNumber)
                 .submitForm()
-
-                // проверка результатов
                 .modalDialogNotOpen();
     }
 
@@ -24,10 +19,8 @@ public class DemoqaFormNegative extends TestBase {
     void negativeSubjectTest() {
         demoqaPage.openPage()
                 .closeBanner()
-                .typeSubjectInput(errorSubjectsInput)
+                .typeSubjectInput(testData.errorSubjectsInput)
                 .submitForm()
-
-                // проверка результатов
                 .modalDialogNotOpen();
     }
 
@@ -37,8 +30,6 @@ public class DemoqaFormNegative extends TestBase {
         demoqaPage.openPage()
                 .closeBanner()
                 .submitForm()
-
-                // проверка результатов
                 .modalDialogNotOpen();
     }
 }

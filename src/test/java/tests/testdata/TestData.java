@@ -1,28 +1,39 @@
 package tests.testdata;
 
+import net.datafaker.Faker;
+
 public class TestData {
+    Faker faker = new Faker();
 
-    //данные для формы DemoqaForm
-    public static String firstName = "Anna";
-    public static String lastName = "Vetrova";
-    public static String userEmail = "anna.vetrova@asdfg.ru";
-    public static String genter = "Female";
-    public static String userNumber = "8923456782";
-    public static String errorUserNumber = "qwerty";
-    public static String month = "May";
-    public static String year = "2000";
-    public static String day = "10";
-    public static String subjectsInput = "Hindi";
-    public static String errorSubjectsInput = "12345";
-    public static String hobbies = "Sports";
-    public static String pictureName = "img.png";
-    public static String currentAddress = "Kazan";
-    public static String state = "Haryana";
-    public static String city = "Karnal";
+    public String firstName = faker.name().firstName();
+    public String lastName = faker.name().lastName();
+    public String userEmail = faker.internet().emailAddress();
+    public String genter = faker.options().option("Male", "Female", "Other");
+    public String userNumber = faker.phoneNumber().subscriberNumber(10);
+    public String errorUserNumber = faker.phoneNumber().subscriberNumber(5);
+    public String day = String.valueOf(faker.number().numberBetween(1, 28));
+    public String month = faker.options().option("January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December");
+    public String year = String.valueOf(faker.number().numberBetween(1950, 2020));
+    public String subjectsInput = faker.options().option("Maths", "Accounting", "Arts", "Social Studies");
+    public String errorSubjectsInput = faker.expression("#{letterify '????'}");
+    public String hobbies = faker.options().option("Music", "Sports", "Reading");
+    public String pictureName = faker.options().option("img.png", "img1.png", "img2.png");
+    public String currentAddress = faker.address().fullAddress();
+    public String state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
+    public String city = selectCity(state);
+
+    private String selectCity(String state) {
+        return switch (state) {
+            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
+            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
+            case "Haryana" -> faker.options().option("Karnal", "Panipat");
+            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
+            default -> null;
+        };
+    }
+
     public static String tableTitle = "Thanks for submitting the form";
-
-
-    //данные для формы TestBoxShort
-    public static String userName = "Rudolf";
-    public static String errorUserEmail = "qwerty";
+    public String userName = faker.name().firstName();
+    public String errorUserEmail = faker.expression("#{templatify 'test','t','q','@'}");
 }

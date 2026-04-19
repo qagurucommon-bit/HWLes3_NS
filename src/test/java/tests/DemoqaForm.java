@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
-import static tests.testdata.TestData.*;
+import static tests.testdata.TestData.tableTitle;
 
 public class DemoqaForm extends TestBase {
 
@@ -10,32 +10,30 @@ public class DemoqaForm extends TestBase {
     void successfulFillFormTest() {
         demoqaPage.openPage()
                 .closeBanner()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .typeEmail(userEmail)
-                .setGender(genter)
-                .typeUserNumber(userNumber)
-                .setDateOfBirth(day, month, year)
-                .typeSubjectInput(subjectsInput)
-                .setHobbies(hobbies)
-                .uploadPicture(pictureName)
-                .typeCurrentAddress(currentAddress)
-                .setStateAndCity(state, city)
+                .typeFirstName(testData.firstName)
+                .typeLastName(testData.lastName)
+                .typeEmail(testData.userEmail)
+                .setGender(testData.genter)
+                .typeUserNumber(testData.userNumber)
+                .setDateOfBirth(testData.day, testData.month, testData.year)
+                .typeSubjectInput(testData.subjectsInput)
+                .setHobbies(testData.hobbies)
+                .uploadPicture(testData.pictureName)
+                .typeCurrentAddress(testData.currentAddress)
+                .setStateAndCity(testData.state, testData.city)
                 .submitForm()
-
-                //проверка результатов
                 .modalDialogOpen()
                 .checkTitle(tableTitle)
-                .checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Student Email", userEmail)
-                .checkResult("Gender", genter)
-                .checkResult("Mobile", userNumber)
-                .checkResult("Date of Birth", day + " " + month + "," + year)
-                .checkResult("Subjects", subjectsInput)
-                .checkResult("Hobbies", hobbies)
-                .checkResult("Picture", pictureName)
-                .checkResult("Address", currentAddress)
-                .checkResult("State and City", state + " " + city)
+                .checkResult("Student Name", testData.firstName + " " + testData.lastName)
+                .checkResult("Student Email", testData.userEmail)
+                .checkResult("Gender", testData.genter)
+                .checkResult("Mobile", testData.userNumber)
+                .checkResult("Date of Birth", testData.day + " " + testData.month + "," + testData.year)
+                .checkResult("Subjects", testData.subjectsInput)
+                .checkResult("Hobbies", testData.hobbies)
+                .checkResult("Picture", testData.pictureName)
+                .checkResult("Address", testData.currentAddress)
+                .checkResult("State and City", testData.state + " " + testData.city)
                 .closeModal();
     }
 }

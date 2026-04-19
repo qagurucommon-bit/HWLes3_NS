@@ -10,18 +10,16 @@ public class DemoqaFormShort extends TestBase {
     void successfulFillFormTest() {
         demoqaPage.openPage()
                 .closeBanner()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .setGender(genter)
-                .typeUserNumber(userNumber)
+                .typeFirstName(testData.firstName)
+                .typeLastName(testData.lastName)
+                .setGender(testData.genter)
+                .typeUserNumber(testData.userNumber)
                 .submitForm()
-
-                // проверка результатов
                 .modalDialogOpen()
                 .checkTitle(tableTitle)
-                .checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Gender", genter)
-                .checkResult("Mobile", userNumber)
+                .checkResult("Student Name", testData.firstName + " " + testData.lastName)
+                .checkResult("Gender", testData.genter)
+                .checkResult("Mobile", testData.userNumber)
                 .closeModal();
 
     }

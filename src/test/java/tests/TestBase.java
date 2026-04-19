@@ -5,12 +5,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import pages.DemoqaPage;
 import pages.TestBoxPage;
+import tests.testdata.TestData;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
     DemoqaPage demoqaPage = new DemoqaPage();
     TestBoxPage testBoxPage = new TestBoxPage();
+    TestData testData = new TestData();
 
     @BeforeAll
     static void setupSelenideEnv() {
