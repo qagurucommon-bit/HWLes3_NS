@@ -1,35 +1,53 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static io.qameta.allure.Allure.step;
 
 public class DemoqaFormNegative extends TestBase {
 
     @Test
-        //некорректное заполнение поля "Mobile"
+    @DisplayName("Broken Registration. Error in User Number")
     void negativeUserNumberTest() {
-        demoqaPage.openPage()
-                .closeBanner()
-                .typeUserNumber(testData.errorUserNumber)
-                .submitForm()
-                .modalDialogNotOpen();
+        step("Open registration page", () ->
+                demoqaPage.openPage()
+                        .closeBanner());
+
+        step("Fill registration form", () ->
+                demoqaPage
+                        .typeUserNumber(testData.errorUserNumber)
+                        .submitForm());
+
+        step("Checking negative form results", () ->
+                demoqaPage.modalDialogNotOpen());
     }
 
     @Test
-        //некорректное заполнение поля "Subjects"
+    @DisplayName("Broken Registration. Error in Subject field")
     void negativeSubjectTest() {
-        demoqaPage.openPage()
-                .closeBanner()
-                .typeSubjectInput(testData.errorSubjectsInput)
-                .submitForm()
-                .modalDialogNotOpen();
+        step("Open registration page", () ->
+                demoqaPage.openPage()
+                        .closeBanner());
+
+        step("Fill registration form", () ->
+                demoqaPage
+                        .typeSubjectInput(testData.errorSubjectsInput)
+                        .submitForm());
+
+        step("Checking negative form results", () ->
+                demoqaPage.modalDialogNotOpen());
     }
 
     @Test
-        //отправка пустой формы
+    @DisplayName("Broken Registration. Empty Form")
     void negativeEmptyFormTest() {
-        demoqaPage.openPage()
-                .closeBanner()
-                .submitForm()
-                .modalDialogNotOpen();
+        step("Open registration page", () ->
+                demoqaPage.openPage()
+                        .closeBanner()
+                        .submitForm());
+
+        step("Checking negative form results", () ->
+                demoqaPage.modalDialogNotOpen());
     }
 }
