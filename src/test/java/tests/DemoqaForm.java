@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static tests.testdata.TestData.tableTitle;
 
-@Story("Registration Demo QA     form")
+@Story("Registration Demo QA form")
 public class DemoqaForm extends TestBase {
 
     @Test
