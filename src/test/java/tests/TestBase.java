@@ -34,7 +34,6 @@ public class TestBase {
         Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
         Configuration.remote = System.getProperty("remote");
-        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
