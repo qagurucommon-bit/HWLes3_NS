@@ -49,7 +49,7 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-//        Attach.attachAsText("Some file", "Some content");
+        Attach.attachAsText("Some file", "Some content");
         closeWebDriver();
     }
 }

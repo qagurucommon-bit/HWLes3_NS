@@ -12,8 +12,8 @@ public class TestData {
     public String userNumber = faker.phoneNumber().subscriberNumber(10);
     public String errorUserNumber = faker.phoneNumber().subscriberNumber(5);
     public String day = String.valueOf(faker.number().numberBetween(1, 28));
-    public String month = faker.options().option("January", "February", "March" /*, "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"*/);
+    public String month = faker.options().option("January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December");
     public String year = String.valueOf(faker.number().numberBetween(1950, 2020));
     public String subjectsInput = faker.options().option("Maths", "Accounting", "Arts", "Social Studies");
     public String errorSubjectsInput = faker.expression("#{letterify '????'}");
